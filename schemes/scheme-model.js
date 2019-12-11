@@ -23,7 +23,7 @@ function findSteps(id){
 }
 
 function add(scheme){
-    return db.insert(scheme,"id").into("schemes");
+    return db.insert(scheme,"*").into("schemes");
 }
 
 function update(changes, id){
@@ -31,5 +31,5 @@ function update(changes, id){
 }
 
 function remove(id){
-    return db("scheme").where("id", id).del();
+    return db("schemes").del().where("id", id);
 }
