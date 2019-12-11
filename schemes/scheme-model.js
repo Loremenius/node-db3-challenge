@@ -6,7 +6,8 @@ module.exports={
     findSteps,
     add,
     update,
-    remove
+    remove,
+    addStep
 
 }
 
@@ -32,4 +33,14 @@ function update(changes, id){
 
 function remove(id){
     return db("schemes").del().where("id", id);
+}
+
+function addStep(step,scheme_id){
+    return db
+        .insert({
+            step_number: step.step_number,
+            instructions:step.instructions,
+            scheme_id:scheme_id
+        })
+        .into("steps");
 }
