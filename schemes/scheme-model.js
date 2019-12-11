@@ -20,7 +20,10 @@ function findById(id){
 }
 
 function findSteps(id){
-    return db("steps").where("scheme_id", id);
+    return db("steps")
+    .select("steps.id","steps.step_number","steps.instructions","schemes.scheme_name")
+    .join("schemes","steps.scheme_id","schemes.id")
+    .where("scheme_id", id);
 }
 
 function add(scheme){
